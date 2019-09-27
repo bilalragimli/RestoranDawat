@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestoranModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AboutSection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="header" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Byte" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullname" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Client" FromRole="Client" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Ingredients" FromRole="Ingredients" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" />
+    <Property Name="ingredientsID" Type="Int32" />
+    <Property Name="photo" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="categoryID" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Byte" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Ingredient" Relationship="Self.FK_Product_Ingredients" FromRole="Product" ToRole="Ingredients" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tableID" Type="Int32" />
+    <Property Name="reservationTime" Type="DateTime" Precision="3" />
+    <Property Name="price" Type="Double" />
+    <Property Name="clientID" Type="Int32" />
+    <Property Name="checkout" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Reservation_Client" FromRole="Reservation" ToRole="Client" />
+    <NavigationProperty Name="Table" Relationship="Self.FK_Reservation_Table" FromRole="Reservation" ToRole="Table" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="adminPassword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SliderMenu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="photo" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="btnText" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SpecialProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="header" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="btnText" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="discount" Type="Int32" />
+    <Property Name="distartDate" Type="DateTime" Precision="3" />
+    <Property Name="experienceDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Table" FromRole="Table" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="clientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Ingredients">
+    <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ingredientsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Table">
+    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="tableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestoranDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AboutSections" EntityType="Self.AboutSection" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Settings" EntityType="Self.Setting" />
+    <EntitySet Name="SliderMenus" EntityType="Self.SliderMenu" />
+    <EntitySet Name="SpecialProducts" EntityType="Self.SpecialProduct" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Client" Association="Self.FK_Reservation_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Ingredients" Association="Self.FK_Product_Ingredients">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Table" Association="Self.FK_Reservation_Table">
+      <End Role="Table" EntitySet="Tables" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

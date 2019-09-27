@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestoranModelStoreContainer" CdmEntityContainer="RestoranDB">
+    <EntitySetMapping Name="AboutSections">
+      <EntityTypeMapping TypeName="RestoranModel.AboutSection">
+        <MappingFragment StoreEntitySet="AboutSection">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="header" ColumnName="header" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="RestoranModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="RestoranModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredients">
+      <EntityTypeMapping TypeName="RestoranModel.Ingredient">
+        <MappingFragment StoreEntitySet="Ingredients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="RestoranModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ingredientsID" ColumnName="ingredientsID" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="RestoranModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tableID" ColumnName="tableID" />
+          <ScalarProperty Name="reservationTime" ColumnName="reservationTime" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="checkout" ColumnName="checkout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="RestoranModel.Setting">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+          <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SliderMenus">
+      <EntityTypeMapping TypeName="RestoranModel.SliderMenu">
+        <MappingFragment StoreEntitySet="SliderMenu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="btnText" ColumnName="btnText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialProducts">
+      <EntityTypeMapping TypeName="RestoranModel.SpecialProduct">
+        <MappingFragment StoreEntitySet="SpecialProduct">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="header" ColumnName="header" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="btnText" ColumnName="btnText" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="distartDate" ColumnName="distartDate" />
+          <ScalarProperty Name="experienceDate" ColumnName="experienceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="RestoranModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="RestoranModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
